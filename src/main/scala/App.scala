@@ -24,12 +24,15 @@ object App {
     }
     print("Select your laptop model ID: ")
     var input = StdIn.readLine()
-    var check1 = statement.executeQuery("SELECT model_id FROM laptop_models WHERE model_id="+input+";")
+
+    var check1 = statement.executeQuery("SELECT model_id FROM laptop_models WHERE model_id="+"'"+input+"'"+";")
       while (check1.next() == false) {
         println("invalid selection, try again")
         input = StdIn.readLine()
-        check1 = statement.executeQuery("SELECT model_id FROM laptop_models WHERE model_id="+input+";")
+        check1 = statement.executeQuery("SELECT model_id FROM laptop_models WHERE model_id="+"'"+input+"'"+";")
       }
+
+
 
       println("Available parts for selected model: ")
       val step2 = statement.executeQuery("SELECT part_id,part_desc from models_have_parts " +
@@ -39,11 +42,11 @@ object App {
       }
     print("Select part ID: ")
     var input2 = StdIn.readLine()
-    var check2 = statement.executeQuery("SELECT part_id,model_id FROM models_have_parts WHERE part_id="+input2+" AND model_id="+input+";")
+    var check2 = statement.executeQuery("SELECT part_id,model_id FROM models_have_parts WHERE part_id="+"'"+input2+"'"+" AND model_id="+"'"+input+"'"+";")
       while (check2.next() == false) {
         println("invalid selection, try again")
         input2 = StdIn.readLine()
-        check2 = statement.executeQuery("SELECT part_id,model_id FROM models_have_parts WHERE part_id="+input2+" AND model_id="+input+";")
+        check2 = statement.executeQuery("SELECT part_id,model_id FROM models_have_parts WHERE part_id="+"'"+input2+"'"+" AND model_id="+"'"+input+"'"+";")
       }
 
     val step3 = statement.executeQuery("SELECT part_id,partname,partnumber,quantity,price " +
@@ -55,7 +58,7 @@ object App {
       print("MPN: ")
       println(step3.getString(3))
       print("Quantity in Stock: ")
-      println(step3.getString(4))
+      println(step3.getInt(4))
       print("Price: $")
       println(step3.getString(5))
         if (step3.getInt(4)==0) {
