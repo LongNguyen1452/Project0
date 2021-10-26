@@ -18,25 +18,36 @@ object App {
     
     val step1 = statement.executeQuery("SELECT * FROM laptop_models;")
     //println(step1)
+    println("Supported laptop models:")
     while ( step1.next() ) {
-      println("Supported laptop models:")
-      println(step1.getString(1)+". " +step1.getString(2))
+        println(step1.getString(1) + ". " + step1.getString(2))
     }
-
     print("Select your laptop model ID: ")
     var input = StdIn.readLine()
+    var check1 = statement.executeQuery("SELECT model_id FROM laptop_models WHERE model_id="+input+";")
+      while (check1.next() == false) {
+        println("invalid selection, try again")
+        input = StdIn.readLine()
+        check1 = statement.executeQuery("SELECT model_id FROM laptop_models WHERE model_id="+input+";")
+      }
 
-    println("Available parts for this model:")
-    val step2 = statement.executeQuery("SELECT part_id,part_desc from models_have_parts " +
-      "WHERE model_id="+input+";")
-    while ( step2.next() ) {
-      println(step2.getString(1)+". " +step2.getString(2))
-    }
-    print("Select category ID: ")
-    input = StdIn.readLine()
+      println("Available parts for selected model: ")
+      val step2 = statement.executeQuery("SELECT part_id,part_desc from models_have_parts " +
+        "WHERE model_id="+input+";")
+      while ( step2.next() ) {
+        println(step2.getString(1)+". " +step2.getString(2))
+      }
+    print("Select part ID: ")
+    var input2 = StdIn.readLine()
+    var check2 = statement.executeQuery("SELECT part_id,model_id FROM models_have_parts WHERE part_id="+input2+" AND model_id="+input+";")
+      while (check2.next() == false) {
+        println("invalid selection, try again")
+        input2 = StdIn.readLine()
+        check2 = statement.executeQuery("SELECT part_id,model_id FROM models_have_parts WHERE part_id="+input2+" AND model_id="+input+";")
+      }
 
     val step3 = statement.executeQuery("SELECT part_id,partname,partnumber,quantity,price " +
-      "FROM parts WHERE part_id="+input+";")
+      "FROM parts WHERE part_id="+input2+";")
     while ( step3.next() ) {
       // lists all description for the selected item
       print("Item name: ")
