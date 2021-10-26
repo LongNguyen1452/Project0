@@ -1,0 +1,4 @@
+[debug] [scala1-main-test] Classpath dependencies List()
+[debug] [scala1-main-test] Dependencies from configurations List(scala1-main)
+[debug] Bloop wrote the configuration of project 'scala1-main-test' to 'C:\Users\Long\IdeaProjects\Scala1-main\.bloop\scala1-main-test.json'
+[success] Generated .bloop\scala1-main-test.json

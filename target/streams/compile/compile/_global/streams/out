@@ -1,0 +1,7 @@
+[0m[[0m[31merror[0m] [0m[0mC:\Users\William Terry\Desktop\BigDataOctober2021\ScalaDBDemo - Copy (2)\src\main\scala\App.scala:48:86: ')' expected but '.' found.[0m
+[0m[[0m[31merror[0m] [0m[0m        println(resultSet.getString(1) +", " +resultSet.getString(2) + ", " resultSet.getString(3))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                     ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\William Terry\Desktop\BigDataOctober2021\ScalaDBDemo - Copy (2)\src\main\scala\App.scala:48:99: ';' expected but ')' found.[0m
+[0m[[0m[31merror[0m] [0m[0m        println(resultSet.getString(1) +", " +resultSet.getString(2) + ", " resultSet.getString(3))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
